@@ -1,17 +1,19 @@
-#
-# Conditional build:
-%bcond_without	apidocs		# do not build and package API docs
-#
 Summary:	libgee - GObject collection library
 Summary(pl.UTF-8):	libgee - GObject collection library
 Name:		libgee
 Version:	0.1.5
-Release:	0.1
-License:	LGPL
+Release:	1
+License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgee/0.1/%{name}-%{version}.tar.bz2
 # Source0-md5:	80102073421e4d7fb18a6aa9622f4de2
-BuildRequires:	xulrunner-devel
+URL:		http://live.gnome.org/Libgee
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	glib2-devel >= 1:2.10.0
+BuildRequires:	libtool
+BuildRequires:	pkgconfig
+BuildRequires:	vala
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -27,6 +29,7 @@ Summary:	Header files for libgee library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libgee
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	glib2-devel >= 1:2.10.0
 
 %description devel
 Header files for libgee library.
@@ -38,6 +41,11 @@ Pliki nagłówkowe biblioteki libgee.
 %setup -q
 
 %build
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure
 %{__make}
 
