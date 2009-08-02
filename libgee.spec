@@ -1,16 +1,16 @@
 Summary:	libgee - GObject collection library
 Summary(pl.UTF-8):	libgee - GObject collection library
 Name:		libgee
-Version:	0.1.5
+Version:	0.2.0
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgee/0.1/%{name}-%{version}.tar.bz2
-# Source0-md5:	80102073421e4d7fb18a6aa9622f4de2
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgee/0.2/%{name}-%{version}.tar.bz2
+# Source0-md5:	f911175d2d0b069c318c4cc6d0e2cfd7
 URL:		http://live.gnome.org/Libgee
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	glib2-devel >= 1:2.10.0
+BuildRequires:	glib2-devel >= 1:2.12.0
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	vala
@@ -29,7 +29,7 @@ Summary:	Header files for libgee library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libgee
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.10.0
+Requires:	glib2-devel >= 1:2.12.0
 
 %description devel
 Header files for libgee library.
@@ -74,3 +74,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_pkgconfigdir}/gee-1.0.pc
 %{_includedir}/gee-1.0
 %{_datadir}/vala/vapi/gee-1.0.vapi
+%{_datadir}/gir-1.0/Gee-1.0.gir
