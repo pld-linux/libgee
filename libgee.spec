@@ -1,12 +1,12 @@
 Summary:	libgee - GObject collection library
 Summary(pl.UTF-8):	libgee - GObject collection library
 Name:		libgee
-Version:	0.2.0
+Version:	0.5.0
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgee/0.2/%{name}-%{version}.tar.bz2
-# Source0-md5:	f911175d2d0b069c318c4cc6d0e2cfd7
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgee/0.5/%{name}-%{version}.tar.bz2
+# Source0-md5:	45e3e069dc3488e4bfe0c8411b85b987
 URL:		http://live.gnome.org/Libgee
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -46,7 +46,8 @@ Pliki nagłówkowe biblioteki libgee.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
+%configure \
+	--disable-silent-rules
 %{__make}
 
 %install
@@ -65,7 +66,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_libdir}/libgee.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgee.so.0
+%attr(755,root,root) %ghost %{_libdir}/libgee.so.2
 
 %files devel
 %defattr(644,root,root,755)
