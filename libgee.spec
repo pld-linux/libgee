@@ -2,7 +2,7 @@ Summary:	libgee - GObject collection library
 Summary(pl.UTF-8):	libgee - GObject collection library
 Name:		libgee
 Version:	0.6.1
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgee/0.6/%{name}-%{version}.tar.bz2
@@ -57,6 +57,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libgee.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -73,7 +75,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgee.so
-%{_libdir}/libgee.la
 %{_pkgconfigdir}/gee-1.0.pc
 %{_includedir}/gee-1.0
 %{_datadir}/vala/vapi/gee-1.0.vapi
