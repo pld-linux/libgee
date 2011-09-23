@@ -1,12 +1,12 @@
 Summary:	libgee - GObject collection library
 Summary(pl.UTF-8):	libgee - GObject collection library
 Name:		libgee
-Version:	0.6.1
-Release:	2
+Version:	0.6.2.1
+Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgee/0.6/%{name}-%{version}.tar.bz2
-# Source0-md5:	9cf60f41f3aa10ac7f1f7e1d094e05a1
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgee/0.6/%{name}-%{version}.tar.xz
+# Source0-md5:	fdb1b75dfd39f73403d89a7ce6453909
 URL:		http://live.gnome.org/Libgee
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -14,7 +14,9 @@ BuildRequires:	glib2-devel >= 1:2.12.0
 BuildRequires:	gobject-introspection-devel >= 0.9.0
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
+BuildRequires:	tar >= 1:1.22
 BuildRequires:	vala
+BuildRequires:	xz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
