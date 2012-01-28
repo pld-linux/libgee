@@ -1,22 +1,28 @@
+#
+# Conditional build:
+%bcond_without	static_libs	# static library
+#
 Summary:	libgee - GObject collection library
-Summary(pl.UTF-8):	libgee - GObject collection library
+Summary(pl.UTF-8):	libgee - biblioteka kolekcji oparta na GObject
 Name:		libgee
-Version:	0.6.3
+Version:	0.6.4
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgee/0.6/%{name}-%{version}.tar.xz
-# Source0-md5:	59464a3ebc772fd1e2c04cf2f438680c
+# Source0-md5:	a32bf498cf33d5e3417823a7b252ad22
 URL:		http://live.gnome.org/Libgee
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	glib2-devel >= 1:2.12.0
 BuildRequires:	gobject-introspection-devel >= 0.9.0
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	tar >= 1:1.22
-BuildRequires:	vala
 BuildRequires:	xz
+# not required for stable releases (all generated files are included)
+#BuildRequires:	vala
+Requires:	glib2 >= 1:2.12.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -24,8 +30,8 @@ libgee is a collection library providing GObject-based interfaces and
 classes for commonly used data structures.
 
 %description -l pl.UTF-8
-libgee jest zbiorem bibliotek dostarczających interfejs GObject i
-klasy powszechnie używanych struktur danych.
+libgee jest biblioteką udostępniajacą oparte na bibliotece GObject
+interfejsy oraz klasy powszechnie używanych struktur danych.
 
 %package devel
 Summary:	Header files for libgee library
@@ -40,6 +46,31 @@ Header files for libgee library.
 %description devel -l pl.UTF-8
 Pliki nagłówkowe biblioteki libgee.
 
+%package static
+Summary:	Static libgee library
+Summary(pl.UTF-8):	Statyczna biblioteka libgee
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
+
+%description static
+Static libgee library.
+
+%description static -l pl.UTF-8
+Statyczna biblioteka libgee.
+
+%package -n vala-libgee
+Summary:	libgee API for Vala language
+Summary(pl.UTF-8):	API libgee dla języka Vala
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
+Requires:	vala
+
+%description -n vala-libgee
+libgee API for Vala language.
+
+%description -n vala-libgee -l pl.UTF-8
+API libgee dla języka Vala.
+
 %prep
 %setup -q
 
@@ -50,7 +81,8 @@ Pliki nagłówkowe biblioteki libgee.
 %{__autoheader}
 %{__automake}
 %configure \
-	--disable-silent-rules
+	--disable-silent-rules \
+	%{?with_static_libs:--enable-static}
 %{__make}
 
 %install
@@ -79,5 +111,14 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libgee.so
 %{_pkgconfigdir}/gee-1.0.pc
 %{_includedir}/gee-1.0
-%{_datadir}/vala/vapi/gee-1.0.vapi
 %{_datadir}/gir-1.0/Gee-1.0.gir
+
+%if %{with static_libc}
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/libgee.a
+%endif
+
+%files -n vala-libgee
+%defattr(644,root,root,755)
+%{_datadir}/vala/vapi/gee-1.0.vapi
