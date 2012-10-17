@@ -5,12 +5,12 @@
 Summary:	libgee - GObject collection library
 Summary(pl.UTF-8):	libgee - biblioteka kolekcji oparta na GObject
 Name:		libgee
-Version:	0.6.5
+Version:	0.8.1
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgee/0.6/%{name}-%{version}.tar.xz
-# Source0-md5:	644ee7b9cadd47a9605359781c0d0b9d
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgee/0.8/%{name}-%{version}.tar.xz
+# Source0-md5:	5743faecc2bb5cfbcdbe0822f472fe06
 URL:		http://live.gnome.org/Libgee
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -21,7 +21,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 # not required for stable releases (all generated files are included)
-#BuildRequires:	vala
+#BuildRequires:	vala >= 2:0.17.5
 Requires:	glib2 >= 1:2.12.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -63,7 +63,7 @@ Summary:	libgee API for Vala language
 Summary(pl.UTF-8):	API libgee dla języka Vala
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
-Requires:	vala
+Requires:	vala >= 2:0.17.5
 
 %description -n vala-libgee
 libgee API for Vala language.
@@ -91,7 +91,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/libgee.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libgee-0.8.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -101,24 +101,24 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README
-%attr(755,root,root) %{_libdir}/libgee.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgee.so.2
-%{_libdir}/girepository-1.0/Gee-1.0.typelib
+%doc AUTHORS ChangeLog MAINTAINERS NEWS README
+%attr(755,root,root) %{_libdir}/libgee-0.8.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgee-0.8.so.2
+%{_libdir}/girepository-1.0/Gee-0.8.typelib
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libgee.so
-%{_pkgconfigdir}/gee-1.0.pc
-%{_includedir}/gee-1.0
-%{_datadir}/gir-1.0/Gee-1.0.gir
+%attr(755,root,root) %{_libdir}/libgee-0.8.so
+%{_pkgconfigdir}/gee-0.8.pc
+%{_includedir}/gee-0.8
+%{_datadir}/gir-1.0/Gee-0.8.gir
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libgee.a
+%{_libdir}/libgee-0.8.a
 %endif
 
 %files -n vala-libgee
 %defattr(644,root,root,755)
-%{_datadir}/vala/vapi/gee-1.0.vapi
+%{_datadir}/vala/vapi/gee-0.8.vapi
