@@ -38,7 +38,7 @@ Summary:	Header files for libgee library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libgee
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.12.0
+Requires:	glib2-devel >= 1:2.32.0
 
 %description devel
 Header files for libgee library.
