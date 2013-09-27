@@ -13,16 +13,16 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgee/0.12/%{name}-%{version}.t
 # Source0-md5:	d9965e1797d76775ae440230f30585f8
 URL:		http://live.gnome.org/Libgee
 BuildRequires:	autoconf >= 2.50
-BuildRequires:	automake
-BuildRequires:	glib2-devel >= 1:2.32.0
+BuildRequires:	automake >= 1:1.11
+BuildRequires:	glib2-devel >= 1:2.36.0
 BuildRequires:	gobject-introspection-devel >= 0.9.0
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 # not required for stable releases (all generated files are included)
-#BuildRequires:	vala >= 2:0.17.5
-Requires:	glib2 >= 1:2.32.0
+#BuildRequires:	vala >= 2:0.21.0
+Requires:	glib2 >= 1:2.36.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -38,7 +38,7 @@ Summary:	Header files for libgee library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libgee
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.32.0
+Requires:	glib2-devel >= 1:2.36.0
 
 %description devel
 Header files for libgee library.
@@ -63,7 +63,7 @@ Summary:	libgee API for Vala language
 Summary(pl.UTF-8):	API libgee dla języka Vala
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
-Requires:	vala >= 2:0.17.5
+Requires:	vala >= 2:0.21.0
 
 %description -n vala-libgee
 libgee API for Vala language.
