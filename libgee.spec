@@ -5,12 +5,12 @@
 Summary:	libgee - GObject collection library
 Summary(pl.UTF-8):	libgee - biblioteka kolekcji oparta na GObject
 Name:		libgee
-Version:	0.14.0
+Version:	0.16.0
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgee/0.14/%{name}-%{version}.tar.xz
-# Source0-md5:	059468d9905b3f34a899dbdf62e465a8
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgee/0.16/%{name}-%{version}.tar.xz
+# Source0-md5:	12ab75a06a145a48406b2c135a3be191
 URL:		http://live.gnome.org/Libgee
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.11
@@ -21,7 +21,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 # not required for stable releases (all generated files are included)
-#BuildRequires:	vala >= 2:0.21.0
+#BuildRequires:	vala >= 2:0.25.1
 Requires:	glib2 >= 1:2.36.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -63,7 +63,7 @@ Summary:	libgee API for Vala language
 Summary(pl.UTF-8):	API libgee dla języka Vala
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
-Requires:	vala >= 2:0.23.2
+Requires:	vala >= 2:0.25.1
 
 %description -n vala-libgee
 libgee API for Vala language.
