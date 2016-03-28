@@ -1,12 +1,12 @@
 #
 # Conditional build:
 %bcond_without	static_libs	# static library
-#
+
 Summary:	libgee - GObject collection library
 Summary(pl.UTF-8):	libgee - biblioteka kolekcji oparta na GObject
 Name:		libgee
 Version:	0.18.0
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgee/0.18/%{name}-%{version}.tar.xz
@@ -64,6 +64,9 @@ Summary(pl.UTF-8):	API libgee dla języka Vala
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	vala >= 2:0.25.1
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description -n vala-libgee
 libgee API for Vala language.
