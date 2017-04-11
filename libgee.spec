@@ -1,7 +1,12 @@
 #
 # Conditional build:
+%bcond_without	apidocs		# API documentation (valadoc)
 %bcond_without	static_libs	# static library
+%bcond_with	bootstrap	# bootstrap without apidocs subpackage (alias for without_apidocs)
 
+%if %{with bootstrap}
+%undefine	with_apidocs
+%endif
 Summary:	libgee - GObject collection library
 Summary(pl.UTF-8):	libgee - biblioteka kolekcji oparta na GObject
 Name:		libgee
@@ -11,6 +16,7 @@ License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgee/0.20/%{name}-%{version}.tar.xz
 # Source0-md5:	66a4bfb6d7b03248acb99d140aac127d
+Patch0:		%{name}-doc.patch
 URL:		http://live.gnome.org/Libgee
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.11
@@ -19,6 +25,7 @@ BuildRequires:	gobject-introspection-devel >= 0.9.0
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	tar >= 1:1.22
+%{?with_apidocs:BuildRequires:	valadoc}
 BuildRequires:	xz
 # not required for stable releases (all generated files are included)
 #BuildRequires:	vala >= 2:0.25.1
@@ -74,8 +81,20 @@ libgee API for Vala language.
 %description -n vala-libgee -l pl.UTF-8
 API libgee dla języka Vala.
 
+%package apidocs
+Summary:	API documentation for libgee library
+Summary(pl.UTF-8):	Dokumentacja API biblioteki libgee
+Group:		Documentation
+
+%description apidocs
+API documentation for libgee library.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API biblioteki libgee.
+
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__libtoolize}
@@ -84,6 +103,7 @@ API libgee dla języka Vala.
 %{__autoheader}
 %{__automake}
 %configure \
+	%{?with_apidocs:--enable-doc} \
 	--disable-silent-rules \
 	%{?with_static_libs:--enable-static}
 %{__make}
@@ -125,3 +145,9 @@ rm -rf $RPM_BUILD_ROOT
 %files -n vala-libgee
 %defattr(644,root,root,755)
 %{_datadir}/vala/vapi/gee-0.8.vapi
+
+%if %{with apidocs}
+%files apidocs
+%defattr(644,root,root,755)
+%{_datadir}/devhelp/references/gee-0.8
+%endif

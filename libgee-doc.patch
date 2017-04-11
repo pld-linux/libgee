@@ -1,0 +1,11 @@
+--- libgee-0.20.0/doc/Makefile.am.orig	2013-03-30 21:15:30.000000000 +0100
++++ libgee-0.20.0/doc/Makefile.am	2017-04-11 21:02:00.553783557 +0200
+@@ -28,7 +28,7 @@
+ $(doc_data) $(innerdoc_DATA) $(img_DATA): gee-0.8/index.html
+ 
+ gee-0.8/index.html:
+-	$(VALADOC) -o gee-0.8/ --wiki ./ --force -b $(top_srcdir) $(SRC_DIR)/*.vala
++	$(VALADOC) -o gee-0.8/ --wiki ./ --force -b $(top_srcdir) --vapidir ../utils --pkg geeutils --pkg gio-2.0 $(SRC_DIR)/*.vala
+ 
+ EXTRA_DIST += \
+ 	index.wiki \
