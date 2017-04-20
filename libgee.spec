@@ -85,6 +85,9 @@ API libgee dla języka Vala.
 Summary:	API documentation for libgee library
 Summary(pl.UTF-8):	Dokumentacja API biblioteki libgee
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 API documentation for libgee library.
