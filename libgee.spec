@@ -10,12 +10,12 @@
 Summary:	libgee - GObject collection library
 Summary(pl.UTF-8):	libgee - biblioteka kolekcji oparta na GObject
 Name:		libgee
-Version:	0.20.2
+Version:	0.20.3
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgee/0.20/%{name}-%{version}.tar.xz
-# Source0-md5:	45db478f2b300ada8e039ebc6c9458de
+# Source0-md5:	e574b3952b93d219b5ec7c74c5892c33
 Patch0:		%{name}-doc.patch
 URL:		https://wiki.gnome.org/Projects/Libgee
 BuildRequires:	autoconf >= 2.50
