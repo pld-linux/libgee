@@ -71,9 +71,7 @@ Summary(pl.UTF-8):	API libgee dla języka Vala
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	vala >= 2:0.25.1
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description -n vala-libgee
 libgee API for Vala language.
@@ -85,9 +83,7 @@ API libgee dla języka Vala.
 Summary:	API documentation for libgee library
 Summary(pl.UTF-8):	Dokumentacja API biblioteki libgee
 Group:		Documentation
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 API documentation for libgee library.
